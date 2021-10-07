@@ -42,7 +42,7 @@ public class PointCPTest
     // If he did not, prompt the user for them.
     try
     {
-      point = new PointCP2(args[0].toUpperCase().charAt(0), 
+      point = new PointCP2( 
         Double.valueOf(args[1]).doubleValue(), 
         Double.valueOf(args[2]).doubleValue());
     }
@@ -64,9 +64,7 @@ public class PointCPTest
       }
     }
     System.out.println("\nYou entered:\n" + point);
-    point.convertStorageToCartesian();
-    System.out.println("\nAfter asking to store as Cartesian:\n" + point);
-    point.convertStorageToPolar();
+    System.out.println("\nAfter asking to return as Cartesian:\nReturned as Cartesian (" + point.getX() + ", " + point.getY() + ")");
     System.out.println("\nAfter asking to store as Polar:\n" + point);
   }
 
@@ -87,7 +85,6 @@ public class PointCPTest
     String theInput = "";  // Input information
     
     //Information to be passed to the constructor
-    char coordType = 'A'; // Temporary default, to be set to P or C
     double a = 0.0;
     double b = 0.0;
 
@@ -101,44 +98,31 @@ public class PointCPTest
         // Prompt the user
         if (i == 0) // First argument - type of coordinates
         {
-          System.out.print("Enter the type of Coordinates you "
-            + "are inputting ((C)artesian / (P)olar): ");
+          System.out.print("Enter the Polar Coordinates\n");
         }
         else // Second and third arguments
         {
           System.out.print("Enter the value of " 
-            + (coordType == 'C' 
-              ? (i == 1 ? "X " : "Y ")
-              : (i == 1 ? "Rho " : "Theta ")) 
+            + (i == 1 ? "Rho " : "Theta ") 
             + "using a decimal point(.): ");
         }
 
         // Get the user's input      
        
         // Initialize the buffer before we read the input
-        for(int k=0; k<1024; k++)
+        if(i != 0)
+        {
+          for(int k=0; k<1024; k++)
         	buffer[k] = '\u0020';        
              
-        System.in.read(buffer);
-        theInput = new String(buffer).trim();
+          System.in.read(buffer);
+          theInput = new String(buffer).trim();
+        }
         
         // Verify the user's input
         try
         {
-          if (i == 0) // First argument -- type of coordinates
-          {
-            if (!((theInput.toUpperCase().charAt(0) == 'C') 
-              || (theInput.toUpperCase().charAt(0) == 'P')))
-            {
-              //Invalid input, reset flag so user is prompted again
-              isOK = false;
-            }
-            else
-            {
-              coordType = theInput.toUpperCase().charAt(0);
-            }
-          }
-          else  // Second and third arguments
+          if(i != 0)  // Second and third arguments
           {
             //Convert the input to double values
             if (i == 1)
@@ -158,6 +142,6 @@ public class PointCPTest
       isOK = false;
     }
     //Return a new PointCP object
-    return (new PointCP2(coordType, a, b));
+    return (new PointCP2(a, b));
   }
 }

@@ -46,22 +46,22 @@ public class PointCP2
 
     public double getX()
     {
-            return (Math.cos(Math.toRadians(yOrTheta)) * xOrRho);
+        return (Math.cos(Math.toRadians(yOrTheta)) * xOrRho);
     }
 
     public double getY()
     {
-            return (Math.sin(Math.toRadians(yOrTheta)) * xOrRho);
+        return (Math.sin(Math.toRadians(yOrTheta)) * xOrRho);
     }
 
     public double getRho()
     {
-            return xOrRho;
+        return xOrRho;
     }
 
     public double getTheta()
     {
-            return yOrTheta;
+        return yOrTheta;
     }
 
     public double getRho(double X, double Y){
@@ -71,11 +71,14 @@ public class PointCP2
     public double getTheta(double X, double Y){
         return Math.toDegrees(Math.atan2(X, Y));
     }
+
     /**
      * Converts Polar coordinates to Cartesian coordinates.
      */
     public String convertStorageToCartesian()
     {
+        System.out.println("Here");
+        System.out.println("The cartesian coordinates are ("+getX()+", "+getY()+")");
         return ("The cartesian coordinates are ("+getX()+", "+getY()+")");
     }
 
@@ -123,6 +126,6 @@ public class PointCP2
      */
     public String toString()
     {
-        return ("Polar coordinates [" + getRho() + "," + getTheta() + "]");
+        return ("Stored as Polar [" + getRho() + "," + getTheta() + "]");
     }
 }
