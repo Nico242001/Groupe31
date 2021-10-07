@@ -51,7 +51,7 @@ public class PointCP4
         if(type != 'C' && type != 'P')
             throw new IllegalArgumentException();
         typeCoord = type;
-        if (typeCoord == 'p'){
+        if (typeCoord == 'P'){
             this.xOrRho = xOrRho;
             this.yOrTheta = yOrTheta;
             this.X = getX(xOrRho, yOrTheta);
@@ -109,7 +109,7 @@ public class PointCP4
      */
     public String convertStorageToPolar()
     {
-        return ("The Polar coordinates stored are ("+getX()+", "+getY()+")");
+        return ("The Polar coordinates stored are (" + xOrRho + ", " + yOrTheta + ")");
     }
 
     /**
@@ -117,7 +117,7 @@ public class PointCP4
      */
     public String convertStorageToCartesian()
     {
-        return ("The Cartesian coordinates stored are ("+getRho()+", "+getTheta()+")");
+        return ("The Cartesian coordinates stored are (" + X + ", " + Y + ")");
     }
 
     /**
