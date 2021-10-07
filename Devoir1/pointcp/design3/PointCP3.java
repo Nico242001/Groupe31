@@ -70,9 +70,9 @@ public class PointCP3
      */
     public String convertStorageToPolar()
     {
-       return ("The polar coordinates are ("+getRho()+", "+getTheta()+")");
+       return ("Returned as Polar Coordinates ("+getRho()+", "+getTheta()+")");
     }
-
+ 
 
     /**
      * Calculates the distance in between two points using the Pythagorean

@@ -77,9 +77,7 @@ public class PointCP2
      */
     public String convertStorageToCartesian()
     {
-        System.out.println("Here");
-        System.out.println("The cartesian coordinates are ("+getX()+", "+getY()+")");
-        return ("The cartesian coordinates are ("+getX()+", "+getY()+")");
+        return ("Returned as Cartesian Coordinates ("+getX()+", "+getY()+")");
     }
 
     /**
